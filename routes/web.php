@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('guest.welcome');
+    return view('guest.home');
 });
 
 Auth::routes(['register'=>false]);
 
-Route::get('/admin', 'HomeController@index')->name('home');
+Route::middelware('auth')->get('/admin', 'Admin\HomeController@index')->name('admin.home');
