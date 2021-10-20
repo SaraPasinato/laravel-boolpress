@@ -36,8 +36,5 @@ created(){
 </script>
 
 <style scoped>
-#section-post{
-  
-   
-}
+
 </style>
