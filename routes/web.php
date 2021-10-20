@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Auth;
     return view('guest.home');
 }); */
 
+//?Rotta autenticazione 
 Auth::routes(['register'=>false]);
-
+//? ROute PER ADMIN
 Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('posts','PostController');
