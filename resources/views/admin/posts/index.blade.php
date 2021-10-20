@@ -4,7 +4,7 @@
     <div class="container">
       @if(session('alert-msg'))
         <div class="alert alert-{{session('alert-type')}}">
-          {{session('alert')}}
+          {{session('alert-msg')}}
         </div>
       @endif
         <header class="my-5 d-flex justify-content-between align-items-center">
@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
               <tr>
+                <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Scritto il </th>
                 <th scope="col"></th>
@@ -22,12 +23,13 @@
             <tbody>
             @forelse ($posts as $post)
             <tr>
+                <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->getFormattedDate('created_at')}}</td>
                 <td class="d-flex justify-content-center">
                   <a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-primary mr-2">Vai</a>
                   <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-warning mr-2">Modifica</a>
-                  <form action="{{route('admin.posts.destroy',$post->id)}}" method="post">
+                  <form action="{{route('admin.posts.destroy',$post->id)}}" method="post" class="delete-form">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Cancella</button>
@@ -45,4 +47,22 @@
             </tfoot>
           </table>
     </div>
+@endsection
+
+@section('scripts')
+
+<script>
+   const delete_form=document.querySelectorAll('.delete-form');
+   delete_form.forEach(btn=>{
+       btn.addEventListener('submit',function(e){
+        e.preventDefault();
+        const conf=confirm('Sei sicuro di voler cancellare definitivamente?');
+        if (conf) this.submit();
+
+      })
+   });
+  
+   
+</script>
+
 @endsection
