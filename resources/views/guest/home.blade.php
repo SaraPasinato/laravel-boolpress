@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref ">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,11 +78,12 @@
                     @endauth
                 </div>
             @endif
+        </div>
                 {{-- root connect Vue component app --}}
             <div id="root">
               
             </div>
-        </div>
+        
         <script src="{{asset('js/front.js')}}"></script>
     </body>
 </html>

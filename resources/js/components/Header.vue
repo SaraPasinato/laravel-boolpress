@@ -1,12 +1,13 @@
 <template>
-  <div class="card-header">
-    <h2>Benventuo in MyBlog</h2>
-  </div>
+  <header >
+    <h2>{{ title }}</h2>
+  </header>
 </template>
 
 <script>
 export default {
  name: 'Header',
+ props: ['title'],
 }
 </script>
 
