@@ -12,6 +12,8 @@
          </div>
          <div class="card-footer text-right">
             <a href="{{route('admin.posts.index')}}" class="btn btn-secondary"> indietro</a>
+            <a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-warning mr-2">Modifica</a>
+
          </div>
         </div>
     </div>

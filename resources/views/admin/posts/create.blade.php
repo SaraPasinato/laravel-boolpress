@@ -17,6 +17,11 @@
               <label for="content"></label>
               <textarea class="form-control" id="content" name="content" rows="6"></textarea>
             </div> 
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary">Crea</button>
+            <a href="{{url()->previous()}}" class="btn btn-secondary">indietro</a>
+
+            </div> 
     </form>
 </section>
     

@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data= request()->all();
+        $data= $request()->all();
 
         $post=new Post();
 
@@ -85,10 +85,9 @@ class PostController extends Controller
     {
         $data = $request()->all();
 
-        //$post->fill($data);
+        $newPost->fill($data);
         $newPost['slug']=Str::slug($data['title'],'-');
-        
-        $newPost->update($data);
+        $newPost->save($data);
 
         return redirect()->route('admin.posts.show',$newPost->id);
     }
