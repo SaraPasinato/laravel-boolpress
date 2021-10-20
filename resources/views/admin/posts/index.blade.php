@@ -22,8 +22,10 @@
               <tr><td colspan="3" class="text-center"> Non ci sono posts al momento</td></tr>
             @endforelse
                
-    
             </tbody>
+            <tfoot>
+              <tr ><td colspan="3" ><div class="paginate d-flex justify-content-center">{{$posts->links()}}</div></td></tr>
+            </tfoot>
           </table>
     </div>
 @endsection
