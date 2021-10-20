@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('guest.home');
-});
+}); */
 
 Auth::routes(['register'=>false]);
 
@@ -24,3 +24,8 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     Route::resource('posts','PostController');
 
 });
+
+//? ROUTE PER LE ROTTE QUALSIASI ECCEZIONE  
+Route::get('{any?}',function(){
+    return view('guest.home');
+})->where('any','.*');
