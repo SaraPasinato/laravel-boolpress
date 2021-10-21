@@ -9,6 +9,7 @@
          <div class="card-body">
              <p class="card-text">{{$post->content}}</p>
              <address>{{$post->getFormattedDate('created_at')}}</address>
+             <h4 class="badge badge-primary p-2">{{$post->category->name}}</h4>
          </div>
          <div class="card-footer d-flex justify-content-end">
             <a href="{{route('admin.posts.index')}}" class="btn btn-secondary mr-2"> indietro</a>
