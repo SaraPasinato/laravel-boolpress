@@ -45,8 +45,8 @@ class PostController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'title' => 'require|unique:posts|string|min:3|max:100',
-            'description'=>'require|string',
+            'title' => 'required|unique:posts|string|min:3|max:100',
+            'content'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
         ],[
@@ -54,7 +54,8 @@ class PostController extends Controller
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
             'title:required'=>'Il titolo esiste già',
         ]);
-        $data= $request()->all();
+
+        $data =$request->all();
 
         $post=new Post();
 
