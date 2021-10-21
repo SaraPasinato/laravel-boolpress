@@ -12,4 +12,8 @@ class Post extends Model
     {
         return  Carbon::create($this->$column)->format($format);
     }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Category');
+    }
 }
