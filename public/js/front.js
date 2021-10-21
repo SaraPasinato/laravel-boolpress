@@ -1978,6 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: ['post']
@@ -38399,13 +38400,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-body" }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: _vm.post.image, alt: _vm.post.title }
+      }),
+      _vm._v(" "),
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.post.title))]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
         _vm._v(" pubblicato il " + _vm._s(_vm.post.created_at))
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.post.image))])
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.post.content))])
     ])
   ])
 }
