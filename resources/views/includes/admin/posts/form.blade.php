@@ -24,8 +24,18 @@
           <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="6">{{old('content',$post->content)}}</textarea>
           <div  class="invalid-feedback">
             Per favore inserisci la descrizione.
-          </div>
+          </div> 
         </div> 
+        <div class="form-group">
+          <label for="category">Seleziona la categoria</label>
+          <select class="form-control" id="category" name="category">
+            <option>Nessuna categoria</option>
+            @foreach ($categories as $category )
+              <option value="{{$category->id}}">{{$category->name}}</option>     
+            @endforeach
+          
+          </select>
+        </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Conferma</button>
           <a href="{{url()->previous()}}" class="btn btn-secondary">indietro</a>
