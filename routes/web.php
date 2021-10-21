@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 }); */
 
 //?Rotta autenticazione 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 //? ROute PER ADMIN
 Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
