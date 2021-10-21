@@ -9,7 +9,7 @@
       <nav class="d-flex justify-content-center" aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item" v-if="pagination.currentPage >=2" @click="getPosts(pagination.currentPage -1 )"><a class="page-link"  >Previous</a></li>
-
+            <!-- //TODO: numero pagine v-for + active + creare Pagination components -->
           <li class="page-item" v-if="pagination.currentPage < pagination.lastPage " @click="getPosts(pagination.currentPage +1)"><a class="page-link" >Next</a></li>
         </ul>
       </nav>
