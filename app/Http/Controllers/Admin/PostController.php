@@ -47,7 +47,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'require|unique:posts|string|min:3|max:100',
             'description'=>'require|string',
-            'image'=>'string'
+            'image'=>'string',
+            'category_id'=>'nullable|exists:categories,id'
         ],[
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',

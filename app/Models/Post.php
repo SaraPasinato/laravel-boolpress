@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 class Post extends Model
 {
-    protected $fillable =['title','content','slug','image'];
+    protected $fillable =['title','content','slug','image','category_id'];
 
     public function getFormattedDate($column,$format='d-m-Y')
     {
