@@ -45,7 +45,7 @@ class PostController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'title' => 'required|unique:posts|string|min:3|max:100',
+            'title' => 'required|unique:posts|string|min:3|max:200',
             'content'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
@@ -86,7 +86,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit',compact('post','categories'));
     }
 
     /**
@@ -96,24 +97,25 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $newPost)
+    public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => ['require',Rule::unique('posts')->ignore($newPost->id),'string','min:3','max:100'],
-            'description'=>'require|string',
-            'image'=>'string'
+            'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:200'],
+            'description'=>'required|string',
+            'image'=>'string',
+            'category_id'=>'nullable|exists:categories,id'
         ],[
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
             'title:required'=>'Il titolo esiste già',
         ]);
+
         $data = $request()->all();
 
-        $newPost->fill($data);
-        $newPost['slug']=Str::slug($data['title'],'-');
-        $newPost->save($data);
+        $post['slug']=Str::slug($data['title'],'-');
+        $post->update($data);
 
-        return redirect()->route('admin.posts.show',$newPost->id);
+        return redirect()->route('admin.posts.show',$post);
     }
 
     /**
