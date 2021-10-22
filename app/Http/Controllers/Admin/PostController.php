@@ -99,16 +99,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-       /*  $request->validate([
-            'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:200'],
-            'description'=>'required|string',
+        $request->validate([
+            'title' => 'required|unique:posts|string|min:3|max:200',
+            'content'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
         ],[
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
             'title:required'=>'Il titolo esiste già',
-        ]); */
+        ]);
 
         $data = $request->all();
 
