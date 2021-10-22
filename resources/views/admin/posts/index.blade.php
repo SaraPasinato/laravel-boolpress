@@ -54,6 +54,26 @@
               <tr ><td colspan="3" ><div class="paginate d-flex justify-content-center">{{$posts->links()}}</div></td></tr>
             </tfoot>
           </table>
+
+          <hr>
+          <section id="by-category-views" class="mt-5">
+             <h2 class="text-secondary text-capitalize text-center mb-5"> vista per categorie</h2>
+              <div class="row">
+                @foreach ($categories as $category)
+                    <div class="col-md-4">
+                      <ul class="list-group list-group-flush mt-1"> <h4 class="text-center font-weight-bolder">{{$category->name}}</h4>
+                        @forelse ($category->posts as $post)
+                              <li class="list-group-item text-center pt-1">
+                                <p><a class="text-dark" href="{{route('admin.posts.show',$post->id)}}">{{$post->title}}</a></p>
+                              </li>
+                        @empty
+                            <li class="list-group-item text-center"><p>Nessun risultato per {{$category->name}} </p></li>
+                        @endforelse
+                      </ul>
+                    </div>
+                @endforeach
+              </div>
+          </section>
     </div>
 @endsection
 

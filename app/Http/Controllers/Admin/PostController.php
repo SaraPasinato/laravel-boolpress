@@ -19,8 +19,9 @@ class PostController extends Controller
     public function index()
     {
         $posts= Post::orderBy('id','desc')->paginate(10);
+        $categories=Category::all();
 
-        return view('admin.posts.index',compact('posts'));
+        return view('admin.posts.index',compact('posts','categories'));
     }
 
     /**
@@ -45,7 +46,7 @@ class PostController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'title' => 'required|unique:posts|string|min:3|max:200',
+            'title' => 'required|unique:posts|string|min:3|max:500',
             'content'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
@@ -100,7 +101,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required|unique:posts|string|min:3|max:200',
+            'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:500'],
             'content'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
