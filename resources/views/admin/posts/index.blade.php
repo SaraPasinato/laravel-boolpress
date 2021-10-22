@@ -13,7 +13,7 @@
         </header>
         <table class="table">
             <thead>
-              <tr>
+              <tr class="text-center">
                 <th scope="col">#</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Categoria</th>
@@ -23,10 +23,10 @@
             </thead>
             <tbody>
             @forelse ($posts as $post)
-            <tr>
+            <tr class="text-center">
                 <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
-                <td>
+                <td >
                    @if($post->category)
                   <h4 class="badge badge-primary p-2">{{$post->category->name}}</h4>    
                   @else
