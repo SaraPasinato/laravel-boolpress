@@ -17,6 +17,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Autore</th>
                 <th scope="col">Scritto il </th>
                 <th scope="col"></th>
               </tr>
@@ -33,6 +34,7 @@
                   <h4 class="badge badge-light p-2">Nessuna categoria</h4>    
                       
                   @endif</td>
+                <td>@if ($post->user){{$post->user->name}} @else anonimo @endif</td>
                 <td>{{$post->getFormattedDate('created_at')}}</td>
                 <td class="d-flex justify-content-center">
                   <a href="{{route('admin.posts.show',$post->id)}}" class="btn btn-primary mr-2">Vai</a>

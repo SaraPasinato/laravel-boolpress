@@ -8,6 +8,7 @@
          </div>
          <div class="card-body">
              <p class="card-text">{{$post->content}}</p>
+             <address class="card-text font-italic">Creato da : {{$post->user->name}}</address>
              <address>{{$post->getFormattedDate('created_at')}}</address>
              @if($post->category)
              <h4 class="badge badge-{{$post->category->color}} p-2">{{$post->category->name}}</h4>    

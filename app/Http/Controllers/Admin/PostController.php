@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -57,7 +58,7 @@ class PostController extends Controller
         ]);
 
         $data =$request->all();
-
+        $data['user_id']=Auth::id();
         $post=new Post();
 
         $post->fill($data);

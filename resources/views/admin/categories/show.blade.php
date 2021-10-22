@@ -16,8 +16,8 @@
      </div>
      <div class="card-footer d-flex justify-content-end">
         <a href="{{route('admin.categories.index')}}" class="btn btn-secondary mr-2"> indietro</a>
-        <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-warning mr-2">Modifica</a>
-        <form action="{{route('admin.categories.destroy',$category->id)}}" method="post" class="delete-form">
+        <a href="{{route('admin.categories.edit',$->id)}}" class="btn btn-warning mr-2">Modifica</a>
+        <form action="{{route('admin.categories.destroy',$->id)}}" method="post" class="delete-form">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Cancella</button>
