@@ -97,10 +97,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $newPost)
+    public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => ['required',Rule::unique('posts')->ignore($newPost->id),'string','min:3','max:200'],
+            'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:200'],
             'description'=>'required|string',
             'image'=>'string',
             'category_id'=>'nullable|exists:categories,id'
@@ -112,10 +112,11 @@ class PostController extends Controller
 
         $data = $request()->all();
 
-        $newPost['slug']=Str::slug($data['title'],'-');
-        $newPost->update($data);
+        $post['slug']=Str::slug($data['title'],'-');
 
-        return redirect()->route('admin.posts.show',$newPost->id);
+        $post->update($data);
+
+        return redirect()->route('admin.posts.show',$post->id);
     }
 
     /**
