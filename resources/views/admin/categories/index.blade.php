@@ -17,6 +17,7 @@
               <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">Colore</th>
+              <th scope="col">N. Post</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -26,6 +27,7 @@
               <td>{{$category->id}}</td>
               <td>{{$category->name}}</td>
               <td><span class="badge p-2 bg-{{$category->color}} @if($category->color =='dark' || $category->color =='secondary') text-light @else text-dark @endif">{{$category->color}}</span></td>
+              <td>{{count($category->posts)}}</td>
               <td class="d-flex justify-content-center">
                 <a href="{{route('admin.categories.show',$category->id)}}" class="btn btn-primary mr-2">Vai</a>
                 <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-warning mr-2">Modifica</a>
