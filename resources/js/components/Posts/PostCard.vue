@@ -5,7 +5,6 @@
       <div class="card-body  col-6 px-5 ">
         <h5 class="card-title">{{post.title}}</h5>
             <h5  class="card-title badge bg-info p-2 rounded-pill">{{post.category.name || ''}}</h5>
-            console.log(post.category.name)
         <h6 class="card-subtitle mb-2 text-muted"> pubblicato il {{getFormattedDate(post.created_at)}}</h6>
         <p class="card-text">{{post.content}}</p>
     </div>

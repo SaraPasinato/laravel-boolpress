@@ -38621,7 +38621,7 @@ var render = function() {
         _c("h5", { staticClass: "card-title badge bg-info p-2 rounded-pill" }, [
           _vm._v(_vm._s(_vm.post.category.name || ""))
         ]),
-        _vm._v("\n            console.log(post.category.name)\n        "),
+        _vm._v(" "),
         _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
           _vm._v(
             " pubblicato il " +
