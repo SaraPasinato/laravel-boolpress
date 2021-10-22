@@ -17,14 +17,14 @@
         <div class="form-group">
           <label for="color">Seleziona il colore</label>
           <select class="form-control" id="color" name="color">
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="light">Nessuna colore</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="primary">Blue</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="secondary">Gray</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="info">LightBlue</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="success">Green</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="danger">Red</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="warning">Yellow</option>
-            <option @if(old('color',$category->color) == $category->color) selected  @endif value="dark">Black</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="light">Nessuna colore</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="primary">Blue</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="secondary">Gray</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="info">LightBlue</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="success">Green</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="danger">Red</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="warning">Yellow</option>
+            <option @if(old('color',$category->color) && old('color',$category->color) == $category->color) selected  @endif value="dark">Black</option>
             @error('color')
             <div  class="invalid-feedback">
               Per favore inserisci il colore.
@@ -35,6 +35,6 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Conferma</button>
-          <a href="{{url()->previous()}}" class="btn btn-secondary">indietro</a>
+          <a href="{{route('admin.posts.show')}}" class="btn btn-secondary">indietro</a>
           </div> 
 </form>
