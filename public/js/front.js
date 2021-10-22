@@ -2005,6 +2005,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: ['post'],
@@ -38616,6 +38618,10 @@ var render = function() {
           _vm._v(_vm._s(_vm.post.title))
         ]),
         _vm._v(" "),
+        _c("h5", { staticClass: "card-title badge bg-info p-2 rounded-pill" }, [
+          _vm._v(_vm._s(_vm.post.category.name || ""))
+        ]),
+        _vm._v("\n            console.log(post.category.name)\n        "),
         _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
           _vm._v(
             " pubblicato il " +

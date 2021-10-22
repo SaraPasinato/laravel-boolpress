@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::orderBy('id','DESC')->paginate(5);
+        $posts=Post::with('category')->orderBy('id','desc')->paginate(5);
 
         return response()->json($posts);
     }
@@ -64,6 +64,6 @@ class PostController extends Controller
     public function destroy($id)
     {
        Post::destroy($id);
-        return response('',204);
+        return response('',404);
     }
 }
