@@ -60,7 +60,7 @@ class PostController extends Controller
         $post=new Post();
 
         $post->fill($data);
-        $post->slug=Str::slug('title','-');
+        $post->slug=Str::slug($post->title,'-');
         $post->save();
 
         return redirect()->route('admin.posts.show',$post->id);
@@ -99,7 +99,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
+       /*  $request->validate([
             'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:200'],
             'description'=>'required|string',
             'image'=>'string',
@@ -108,11 +108,11 @@ class PostController extends Controller
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
             'title:required'=>'Il titolo esiste già',
-        ]);
+        ]); */
 
-        $data = $request()->all();
+        $data = $request->all();
 
-        $post['slug']=Str::slug($data['title'],'-');
+        $post->slug=Str::slug($data['title'],'-');
 
         $post->update($data);
 
