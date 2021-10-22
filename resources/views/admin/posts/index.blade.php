@@ -51,7 +51,7 @@
                
             </tbody>
             <tfoot>
-              <tr ><td colspan="3" ><div class="paginate d-flex justify-content-center">{{$posts->links()}}</div></td></tr>
+              <td colspan="5" ><div class="paginate row justify-content-center align-items-center">{{$posts->links()}}</div></td>
             </tfoot>
           </table>
 
