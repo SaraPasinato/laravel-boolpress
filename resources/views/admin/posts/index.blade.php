@@ -28,9 +28,9 @@
                 <td>{{$post->title}}</td>
                 <td >
                    @if($post->category)
-                  <h4 class="badge badge-primary p-2">{{$post->category->name}}</h4>    
+                  <h4 class="badge badge-{{$post->category->color}} p-2">{{$post->category->name}}</h4>    
                   @else
-                  <h4 class="badge badge-secondary p-2">Nessuna categoria</h4>    
+                  <h4 class="badge badge-light p-2">Nessuna categoria</h4>    
                       
                   @endif</td>
                 <td>{{$post->getFormattedDate('created_at')}}</td>
