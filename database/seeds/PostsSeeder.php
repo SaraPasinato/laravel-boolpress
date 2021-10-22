@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\Category;
 use Faker\Generator as Faker;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class PostsSeeder extends Seeder
@@ -15,9 +17,12 @@ class PostsSeeder extends Seeder
     public function run(Faker $faker)
     {
         
+        $categories= Category::select('id')->pluck('id')->toArray();
+
         for ($i = 0; $i < 20; $i++ ){
             $post= new Post();
 
+            $post->category_id=Arr::random($categories);
             $post->title=$faker->text(50);
             $post->content=$faker->paragraph(3,true);
             $post->image=$faker->imageUrl(250,250);
