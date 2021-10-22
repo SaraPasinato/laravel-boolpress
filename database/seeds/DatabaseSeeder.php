@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call([PostsSeeder::class,CategoriesSeeder::class]);
+         $this->call([CategoriesSeeder::class,PostsSeeder::class]);
          //? php artisan db:seed (exe seeder multipli in $this->call([UserSeeder:class,...]) )
     }
 }

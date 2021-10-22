@@ -25,7 +25,7 @@
           <tr class="text-center">
               <td>{{$category->id}}</td>
               <td>{{$category->name}}</td>
-              <td>{{$category->color}}</td>
+              <td><span class="badge p-2 bg-{{$category->color}} @if($category->color =='dark' || $category->color =='secondary') text-light @else text-dark @endif">{{$category->color}}</span></td>
               <td class="d-flex justify-content-center">
                 <a href="{{route('admin.categories.show',$category->id)}}" class="btn btn-primary mr-2">Vai</a>
                 <a href="{{route('admin.categories.edit',$category->id)}}" class="btn btn-warning mr-2">Modifica</a>
