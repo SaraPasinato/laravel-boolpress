@@ -19,6 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
+       // ddd(Auth::user()->userInfo);
+
         $posts= Post::orderBy('id','desc')->paginate(10);
         $categories=Category::all();
 
