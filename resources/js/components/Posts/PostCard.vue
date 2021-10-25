@@ -4,8 +4,9 @@
       <img :src="post.image" :alt="post.title" class="card-img-top col-6 m-0 p-0">
       <div class="card-body  col-6 px-5 ">
         <h5 class="card-title">{{post.title}}</h5>
-            <h5  class="card-title badge bg-info p-2 rounded-pill">{{post.category.name || ''}}</h5>
+        <h5  class="card-title badge font-wight-bolder p-2 rounded-pill "   :class="`bg-${post.category.color}`">{{post.category.name || ''}}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> pubblicato il {{getFormattedDate(post.created_at)}}</h6>
+        <h6 class="card-subtitle mb-2  font-italic text-muted"> da: {{post.user.name}}</h6>
         <p class="card-text">{{post.content}}</p>
     </div>
     </div>
