@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
 
             $user->name=$faker->name();
             $user->email=$faker->email();
-            $user->password=$faker->password();
+            $user->password=bcrypt($faker->password());
 
             $user->save();
         }
