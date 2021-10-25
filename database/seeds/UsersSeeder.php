@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
         for ($i = 0; $i < 5; $i++ ){
             $user= new User();
 
-            $user->name=$faker->name();
+            $user->name=$faker->userName();
             $user->email=$faker->email();
             $user->password=bcrypt($faker->password());
 
