@@ -2011,6 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: ['post'],
@@ -38617,61 +38618,72 @@ var render = function() {
         attrs: { src: _vm.post.image, alt: _vm.post.title }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body  col-6 px-4 " }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.post.title))
-        ]),
-        _vm._v(" "),
-        _c(
-          "h5",
-          {
-            staticClass: "card-title badge font-wight-bolder p-2 rounded-pill ",
-            class: "bg-" + _vm.post.category.color
-          },
-          [_vm._v(_vm._s(_vm.post.category.name || ""))]
-        ),
-        _vm._v(" "),
-        _c(
-          "small",
-          {
-            staticClass:
-              " justify-content-center  align-items-center card-title"
-          },
+      _c(
+        "div",
+        { staticClass: "card-body  col-6 px-4 " },
+        [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(_vm._s(_vm.post.title))
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v("Category:  "),
+            _c(
+              "span",
+              {
+                staticClass:
+                  "card-title badge font-wight-bolder p-2 rounded-pill ",
+                class: "bg-" + _vm.post.category.color
+              },
+              [_vm._v(_vm._s(_vm.post.category.name || ""))]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "h5",
+            {
+              staticClass:
+                " justify-content-center  align-items-center card-title"
+            },
+            [_vm._v(" Tags:")]
+          ),
+          _vm._v(" "),
           _vm._l(_vm.post.tags, function(tag) {
             return _c(
               "p",
               {
                 key: tag.id,
-                staticClass: "  col-3 badge text-dark p-2 rounded-pill ",
+                staticClass:
+                  "d-inline-block col-3 badge text-dark p-2 rounded-pill ",
                 style: "background:" + tag.color
               },
-              [_vm._v(_vm._s(tag.name))]
+              [_vm._v(_vm._s(tag.name || ""))]
             )
           }),
-          0
-        ),
-        _vm._v(" "),
-        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-          _vm._v(
-            " pubblicato il " +
-              _vm._s(_vm.getFormattedDate(_vm.post.created_at))
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "h6",
-          { staticClass: "card-subtitle mb-2  font-italic text-muted" },
-          [
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
             _vm._v(
-              " da: " + _vm._s(_vm.post.user ? _vm.post.user.name : "Anonimo")
+              " pubblicato il " +
+                _vm._s(_vm.getFormattedDate(_vm.post.created_at))
             )
-          ]
-        ),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.post.content))
-        ])
-      ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "h6",
+            { staticClass: "card-subtitle mb-2  font-italic text-muted" },
+            [
+              _vm._v(
+                " da: " + _vm._s(_vm.post.user ? _vm.post.user.name : "Anonimo")
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.post.content))
+          ])
+        ],
+        2
+      )
     ])
   ])
 }

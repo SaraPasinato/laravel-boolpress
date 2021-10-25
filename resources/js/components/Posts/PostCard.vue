@@ -4,10 +4,11 @@
       <img :src="post.image" :alt="post.title" class="card-img-top col-6 m-0 p-0">
       <div class="card-body  col-6 px-4 ">
         <h5 class="card-title">{{post.title}}</h5>
-        <h5  class="card-title badge font-wight-bolder p-2 rounded-pill "   :class="`bg-${post.category.color}`">{{post.category.name || ''}}</h5>
-        <small class=" justify-content-center  align-items-center card-title"> 
-         <p class="  col-3 badge text-dark p-2 rounded-pill " v-for="tag in post.tags" :key="tag.id" :style="`background:${tag.color}`">{{tag.name}}</p>
-        </small>
+        <h5 class="card-title">Category:  <span  class="card-title badge font-wight-bolder p-2 rounded-pill "   :class="`bg-${post.category.color}`">{{post.category.name || ''}}</span></h5>
+       
+        <h5 class=" justify-content-center  align-items-center card-title"> Tags:</h5>
+         <p class="d-inline-block col-3 badge text-dark p-2 rounded-pill " v-for="tag in post.tags" :key="tag.id" :style="`background:${tag.color}`">{{tag.name ||''}}</p>
+        
         <h6 class="card-subtitle mb-2 text-muted"> pubblicato il {{getFormattedDate(post.created_at)}}</h6>
         <h6 class="card-subtitle mb-2  font-italic text-muted"> da: {{post.user ? post.user.name : 'Anonimo'}}</h6>
         <p class="card-text">{{post.content}}</p>
