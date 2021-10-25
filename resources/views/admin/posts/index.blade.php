@@ -17,6 +17,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Autore</th>
                 <th scope="col">Scritto il </th>
                 <th scope="col"></th>
@@ -27,13 +28,20 @@
             <tr class="text-center">
                 <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
-                <td >
+                <td>
                    @if($post->category)
                   <h4 class="badge badge-{{$post->category->color}} p-2">{{$post->category->name}}</h4>    
                   @else
-                  <h4 class="badge badge-light p-2">Nessuna categoria</h4>    
+                  <h4 class="badge badge-light p-2">Nessuna categoria</h4>       
+                  @endif
+                </td>
+                <td>
+                  @forelse ($post->tags as $tag)
+                  <h4 class="badge  p-2" style="background-color:{{$tag->color}}">{{$tag->name}}</h4>      
+                  @empty
                       
-                  @endif</td>
+                  @endforelse
+                </td>
                 <td>@if ($post->user){{$post->user->name}} @else anonimo @endif</td>
                 <td>{{$post->getFormattedDate('created_at')}}</td>
                 <td class="d-flex justify-content-center">
@@ -53,7 +61,7 @@
                
             </tbody>
             <tfoot>
-              <td colspan="5" ><div class="paginate row justify-content-center align-items-center">{{$posts->links()}}</div></td>
+              <td colspan="7" ><div class="paginate row justify-content-center align-items-center">{{$posts->links()}}</div></td>
             </tfoot>
           </table>
 
