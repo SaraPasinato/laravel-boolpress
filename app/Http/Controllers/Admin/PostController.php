@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -24,6 +25,7 @@ class PostController extends Controller
         $posts= Post::orderBy('id','desc')->paginate(10);
         $categories=Category::all();
         
+        
         return view('admin.posts.index',compact('posts','categories'));
     }
 
@@ -36,8 +38,8 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories= Category::all();
-
-        return view('admin.posts.create',compact('post','categories'));
+        $tags=Tag::all();
+        return view('admin.posts.create',compact('tags','post','categories'));
     }
 
     /**
@@ -52,7 +54,8 @@ class PostController extends Controller
             'title' => 'required|unique:posts|string|min:3|max:500',
             'content'=>'required|string',
             'image'=>'string',
-            'category_id'=>'nullable|exists:categories,id'
+            'category_id'=>'nullable|exists:categories,id',
+            'tags'=>'nullable|exists:tags,id',
         ],[
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
@@ -67,6 +70,7 @@ class PostController extends Controller
         $post->slug=Str::slug($post->title,'-');
         $post->save();
 
+        if(array_key_exists('tags',$data)) $post->tags()->attach($data['tags']);
         return redirect()->route('admin.posts.show',$post->id);
 
     }
