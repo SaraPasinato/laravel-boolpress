@@ -2,12 +2,16 @@
   <div class="card w-50 my-2  border border-white">
     <div class="row h-100 justify-content-center no-gutter">
       <img :src="post.image" :alt="post.title" class="card-img-top col-6 m-0 p-0">
-      <div class="card-body  col-6 px-5 ">
+      <div class="card-body  col-6 px-4 ">
         <h5 class="card-title">{{post.title}}</h5>
         <h5  class="card-title badge font-wight-bolder p-2 rounded-pill "   :class="`bg-${post.category.color}`">{{post.category.name || ''}}</h5>
+        <small class=" justify-content-center  align-items-center card-title"> 
+         <p class="  col-3 badge text-dark p-2 rounded-pill " v-for="tag in post.tags" :key="tag.id" :style="`background:${tag.color}`">{{tag.name}}</p>
+        </small>
         <h6 class="card-subtitle mb-2 text-muted"> pubblicato il {{getFormattedDate(post.created_at)}}</h6>
         <h6 class="card-subtitle mb-2  font-italic text-muted"> da: {{post.user ? post.user.name : 'Anonimo'}}</h6>
         <p class="card-text">{{post.content}}</p>
+
     </div>
     </div>
 
