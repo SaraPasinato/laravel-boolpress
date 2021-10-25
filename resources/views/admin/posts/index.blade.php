@@ -39,7 +39,8 @@
                   @forelse ($post->tags as $tag)
                   <h4 class="badge  p-2" style="background-color:{{$tag->color}}">{{$tag->name}}</h4>      
                   @empty
-                      
+                  <h4 class="badge bg-light border border-dark p-2" >Nessun tag</h4>      
+      
                   @endforelse
                 </td>
                 <td>@if ($post->user){{$post->user->name}} @else anonimo @endif</td>
