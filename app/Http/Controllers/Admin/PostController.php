@@ -24,7 +24,7 @@ class PostController extends Controller
 
         $posts= Post::orderBy('id','desc')->paginate(10);
         $categories=Category::all();
-        
+      
         
         return view('admin.posts.index',compact('posts','categories'));
     }
@@ -94,8 +94,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tags=Tag::all();
         $categories= Category::all();
-        return view('admin.posts.edit',compact('post','categories'));
+        $tagIds=$post->tags->pluck('id')->toArray();
+        return view('admin.posts.edit',compact('tags','tagIds','post','categories'));
     }
 
     /**
@@ -111,7 +113,8 @@ class PostController extends Controller
             'title' => ['required',Rule::unique('posts')->ignore($post->id),'string','min:3','max:500'],
             'content'=>'required|string',
             'image'=>'string',
-            'category_id'=>'nullable|exists:categories,id'
+            'category_id'=>'nullable|exists:categories,id',
+            'tags'=>'nullable|exists:tags,id',
         ],[
             'required'=>'il campo :attribute è obbligatorio',
             'min'=>'il minimo dei caratteri per il campo :attribute è :min',
@@ -121,6 +124,10 @@ class PostController extends Controller
         $data = $request->all();
 
         $post->slug=Str::slug($data['title'],'-');
+
+        if(!array_key_exists('tags',$data)) $post->tags()->detach();
+        else
+            $post->tags()->sync($data['tags']);
 
         $post->update($data);
 
@@ -135,6 +142,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if(count($post->tags)) $post->tags()->detach();
+        
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('alert-msg','post cancellato con successo')->with('alert-type','danger');
