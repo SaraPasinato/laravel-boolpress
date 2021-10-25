@@ -38637,7 +38637,11 @@ var render = function() {
         _c(
           "h6",
           { staticClass: "card-subtitle mb-2  font-italic text-muted" },
-          [_vm._v(" da: " + _vm._s(_vm.post.user.name))]
+          [
+            _vm._v(
+              " da: " + _vm._s(_vm.post.user ? _vm.post.user.name : "Anonimo")
+            )
+          ]
         ),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [

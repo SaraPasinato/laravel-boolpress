@@ -6,7 +6,7 @@
         <h5 class="card-title">{{post.title}}</h5>
         <h5  class="card-title badge font-wight-bolder p-2 rounded-pill "   :class="`bg-${post.category.color}`">{{post.category.name || ''}}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> pubblicato il {{getFormattedDate(post.created_at)}}</h6>
-        <h6 class="card-subtitle mb-2  font-italic text-muted"> da: {{post.user.name}}</h6>
+        <h6 class="card-subtitle mb-2  font-italic text-muted"> da: {{post.user ? post.user.name : 'Anonimo'}}</h6>
         <p class="card-text">{{post.content}}</p>
     </div>
     </div>
